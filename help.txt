@@ -1,0 +1,19 @@
+8000 is free right now, so here's the exact routine — PowerShell, from the project root (c:\Users\Sanjana\Desktop\projects\careerlens-ai):
+
+Every time you change frontend code, rebuild first:
+
+
+cd frontend
+npm run build
+cd ..
+Then start the server (one command, one port — this serves both the API and the built frontend):
+
+
+venv\Scripts\activate
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+
+Open http://127.0.0.1:8000 — that's the whole app. Leave that terminal running; Ctrl+C stops it.
+
+If you only changed backend code (nothing in frontend/), skip the rebuild step — just restart the second command.
+
+If port 8000 says "address already in use", something else (possibly your other project, inventory-order-api) is already on it — pick a different port for both the build-independent step and this command, e.g. --port 8010, and open http://127.0.0.1:8010 instead.
