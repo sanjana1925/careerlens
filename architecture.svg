@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 640" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrow-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c2760a"/>
+    </marker>
+    <marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c0348a"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1040" height="640" fill="#ffffff"/>
+
+  <!-- Stage 1: Client -->
+  <rect x="390" y="24" width="260" height="66" rx="14" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="520" y="50" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">React Frontend (Vite)</text>
+  <text x="520" y="70" text-anchor="middle" font-size="12" fill="#3b5998">Dashboard · Jobs · Resumes · Match</text>
+
+  <!-- Arrow: Frontend -> Routers -->
+  <line x1="520" y1="90" x2="520" y2="136" stroke="#334155" stroke-width="2" marker-end="url(#arrow-solid)"/>
+  <text x="536" y="116" font-size="11" fill="#334155">HTTP /api/*</text>
+
+  <!-- Stage 2: API -->
+  <rect x="350" y="138" width="340" height="70" rx="14" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="520" y="164" text-anchor="middle" font-size="16" font-weight="700" fill="#4c1d95">FastAPI Routers</text>
+  <text x="520" y="184" text-anchor="middle" font-size="12" fill="#5b21b6">auth · resumes · jobs · match · dashboard</text>
+  <text x="520" y="200" text-anchor="middle" font-size="11" fill="#7c3aed">JWT auth · Pydantic schemas · CORS</text>
+
+  <!-- Arrow: Routers -> Services -->
+  <line x1="520" y1="208" x2="520" y2="254" stroke="#334155" stroke-width="2" marker-end="url(#arrow-solid)"/>
+  <text x="536" y="234" font-size="11" fill="#334155">calls</text>
+
+  <!-- Stage 3: Services -->
+  <rect x="230" y="256" width="580" height="110" rx="14" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="520" y="280" text-anchor="middle" font-size="16" font-weight="700" fill="#065f46">Services Layer (deterministic core)</text>
+  <text x="520" y="302" text-anchor="middle" font-size="12" fill="#047857">ats_scorer · job_matcher · market_intelligence</text>
+  <text x="520" y="320" text-anchor="middle" font-size="12" fill="#047857">project_analyzer · job_scraper</text>
+  <text x="520" y="342" text-anchor="middle" font-size="11" fill="#059669">app/utils/skills.py — 200+ term skill taxonomy (always-on, LLM-independent)</text>
+
+  <!-- Arrow: Services -> SQLite -->
+  <line x1="330" y1="366" x2="200" y2="420" stroke="#0f766e" stroke-width="2" marker-end="url(#arrow-teal)"/>
+  <text x="180" y="400" font-size="11" fill="#0f766e">persist / query</text>
+
+  <!-- Arrow: Services -> JobSpy -->
+  <line x1="470" y1="366" x2="460" y2="420" stroke="#c2760a" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="380" y="402" font-size="11" fill="#c2760a">scrape_jobs()</text>
+
+  <!-- Arrow: Services -> Gemini/Chroma (dashed = optional) -->
+  <line x1="660" y1="366" x2="820" y2="420" stroke="#c0348a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow-pink)"/>
+  <text x="700" y="402" font-size="11" fill="#c0348a">optional narrative</text>
+  <text x="700" y="415" font-size="11" fill="#c0348a">+ semantic score</text>
+
+  <!-- Stage 4a: SQLite -->
+  <rect x="60" y="422" width="220" height="90" rx="14" fill="#f8fafc" stroke="#0f766e" stroke-width="2"/>
+  <text x="170" y="452" text-anchor="middle" font-size="15" font-weight="700" fill="#134e4a">SQLite DB</text>
+  <text x="170" y="472" text-anchor="middle" font-size="11" fill="#0f766e">Users · Resumes · Analyses</text>
+  <text x="170" y="488" text-anchor="middle" font-size="11" fill="#0f766e">JobPostings · JobMatches</text>
+
+  <!-- Stage 4b: JobSpy -->
+  <rect x="330" y="422" width="260" height="90" rx="14" fill="#fffbeb" stroke="#c2760a" stroke-width="2"/>
+  <text x="460" y="452" text-anchor="middle" font-size="15" font-weight="700" fill="#7c4a03">JobSpy</text>
+  <text x="460" y="472" text-anchor="middle" font-size="11" fill="#92620a">LinkedIn · Indeed · Glassdoor</text>
+  <text x="460" y="488" text-anchor="middle" font-size="11" fill="#92620a">Google Jobs · ZipRecruiter</text>
+  <text x="460" y="504" text-anchor="middle" font-size="10" fill="#a5730f">per-source, isolated on failure</text>
+
+  <!-- Stage 4c: Gemini + Chroma -->
+  <rect x="640" y="422" width="270" height="90" rx="14" fill="#fdf2f8" stroke="#c0348a" stroke-width="2"/>
+  <text x="775" y="452" text-anchor="middle" font-size="15" font-weight="700" fill="#831843">Gemini API + Chroma</text>
+  <text x="775" y="472" text-anchor="middle" font-size="11" fill="#9d174d">LLM narrative (strengths/gaps)</text>
+  <text x="775" y="488" text-anchor="middle" font-size="11" fill="#9d174d">Vector semantic match score</text>
+  <text x="775" y="504" text-anchor="middle" font-size="10" fill="#be185d">best-effort — falls back cleanly</text>
+
+  <!-- Response path: routes around the right side so it never crosses another box -->
+  <line x1="910" y1="466" x2="985" y2="466" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <line x1="985" y1="466" x2="985" y2="174" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <line x1="985" y1="174" x2="694" y2="174" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 4" marker-end="url(#arrow-solid)"/>
+  <text x="995" y="330" font-size="11" fill="#64748b" transform="rotate(-90 995 330)">response JSON flows back up the same path</text>
+
+  <!-- Legend -->
+  <rect x="60" y="560" width="14" height="14" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="80" y="571" font-size="11" fill="#334155">deterministic core</text>
+  <rect x="220" y="560" width="14" height="14" fill="#fffbeb" stroke="#c2760a" stroke-width="1.5"/>
+  <text x="240" y="571" font-size="11" fill="#334155">external scrape source</text>
+  <rect x="400" y="560" width="14" height="14" fill="#fdf2f8" stroke="#c0348a" stroke-width="1.5"/>
+  <text x="420" y="571" font-size="11" fill="#334155">optional AI enrichment</text>
+</svg>
